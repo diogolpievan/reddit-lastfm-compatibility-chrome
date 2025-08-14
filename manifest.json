@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Last.fm Compatibility Checker",
+  "version": "1.0",
+  "description": "Mostra compatibilidade com outro usuário no Last.fm sem abrir o site",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.last.fm/*",
+    "https://www.reddit.com/r/lastfm/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
