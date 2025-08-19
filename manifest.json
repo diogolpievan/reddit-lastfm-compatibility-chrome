@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Last.fm Compatibility Checker",
+  "name": "r/lastfm Compatibility Checker",
   "version": "1.0",
-  "description": "Mostra compatibilidade com outro usuário no Last.fm sem abrir o site",
+  "description": "Check Last.fm compatibility with Reddit users directly from their flair - no profile visits needed.",
   "permissions": [
     "scripting",
     "activeTab"
@@ -15,12 +15,16 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": [
+      "utils.js",
+      "content/content.js"
+    ],
+    "css": ["content/styles.css"]
     }
   ]
 }
