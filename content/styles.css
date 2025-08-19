@@ -1,0 +1,23 @@
+:root {
+    --compat-border-espessure: 3px;
+}
+
+.tasteometer-compat-avatar {
+    border: var(--compat-border-espessure) solid;
+    border-radius: 50%;
+}
+
+.tasteometer-compat-tag {
+    height: 16px;
+    background-color: rgba(153, 0, 255, 0.3);
+    border: 2px solid #90f;
+    margin-left: 10px;
+    padding: 1px;
+    border-radius: 10px;
+    width: auto;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: .8em;
+    padding: 0 10px;
+}
