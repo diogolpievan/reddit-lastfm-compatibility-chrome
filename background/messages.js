@@ -1,6 +1,6 @@
-import { checkLogin } from './login';
-import { getCompatibilityScrapping } from './scrapping';
-import { saveComparedUser } from './storage';
+import { checkLogin } from './login.js';
+import { getCompatibilityScrapping } from './scrapping.js';
+import { saveComparedUser } from './storage.js';
 
 export function handleMessages(msg, sender, sendResponse) {
     if(msg.action === "checkLogin") {
