@@ -1,5 +1,5 @@
 import { checkLogin } from './login.js';
-import { getCompatibilityScrapping } from './scrapping.js';
+import { getUserCompatibilityScrapping } from './scrapping.js';
 import { saveComparedUser } from './storage.js';
 
 export function handleMessages(msg, sender, sendResponse) {
@@ -11,8 +11,8 @@ export function handleMessages(msg, sender, sendResponse) {
         return true;
     }
 
-    if(msg.action === "getUserCompatibility") {
-        getCompatibilityScrapping()
+    if(msg.action === "getUserCompatibilityScrapping") {
+        getUserCompatibilityScrapping(msg.username)
         .then(html => sendResponse({ html }))
         .catch(err => sendResponse( { error: err.toString() } ));
 
@@ -23,5 +23,7 @@ export function handleMessages(msg, sender, sendResponse) {
         saveComparedUser(msg)
         .then(success => sendResponse(success))
         .catch(err    => sendResponse( { error: err.toString() } ));
+
+        return true;
     }
 };
