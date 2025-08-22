@@ -20,7 +20,7 @@ export function handleMessages(msg, sender, sendResponse) {
     }
 
     if(msg.action === "saveComparedUser") {
-        saveComparedUser(msg)
+        saveComparedUser(msg.comparedUser)
         .then(success => sendResponse(success))
         .catch(err    => sendResponse( { error: err.toString() } ));
 
