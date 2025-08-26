@@ -2,29 +2,56 @@
   "manifest_version": 3,
   "name": "r/lastfm Compatibility Checker",
   "version": "1.0",
+  "icons": {
+    "16": "assets/icons/icon128.png",
+    "32": "assets/icons/icon128.png",
+    "48": "assets/icons/icon128.png",
+    "128": "assets/icons/icon128.png"
+  },
   "description": "Check Last.fm compatibility with Reddit users directly from their flair - no profile visits needed.",
   "permissions": [
     "scripting",
-    "activeTab"
+    "activeTab",
+    "storage",
+    "webNavigation"
   ],
   "host_permissions": [
     "https://www.last.fm/*",
     "https://www.reddit.com/r/lastfm/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background/background.js",
+    "type": "module"
   },
   "action": {
+    "default_icon": "assets/icons/icon128.png",
     "default_popup": "popup/popup.html"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://www.reddit.com/r/lastfm/*"],
       "js": [
-      "utils.js",
-      "content/content.js"
+      "utils/compatibility.js",
+      "utils/format.js",
+      "content/content.js",
+      "content/observer.js",
+      "content/syncCache.js",
+      "content/render.js"
     ],
-    "css": ["content/styles.css"]
+      "css": ["content/styles.css"]
+    },
+    {
+      "matches": ["https://www.reddit.com/r/lastfm/"],
+      "js": [
+        "content/post.js"
+      ]
+    },
+    {
+      "matches": ["https://www.reddit.com/r/lastfm/comments/*"],
+      "js": [
+        "content/comments.js"
+      ]
     }
   ]
 }
+ 
