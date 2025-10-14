@@ -1,6 +1,8 @@
 import { CompatibilityScore } from "./compatibility";
 
-export default interface ScrappedData { 
-  score: CompatibilityScore,
-  body: string | null
+export default interface ScrappedData {
+  compatibility: {
+    score: CompatibilityScore;
+    body: string | null;
+  };
 }
