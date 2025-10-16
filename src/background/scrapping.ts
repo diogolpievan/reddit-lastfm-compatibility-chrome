@@ -2,6 +2,21 @@ import scrapeIt from "scrape-it";
 import ScrappedData from "../types/scrapped-data";
 import { CompatibilityScore } from "../types/compatibility";
 
+export async function getCurrentClientUsername(): Promise<string> {
+  const response = await fetch(`https://www.last.fm/`, {
+    credentials: "include",
+  });
+  const html = await response.text();
+
+  const currentClientUsername = scrapeIt.scrapeHTML<string>(html, {
+    username: {
+      selector: ".auth-dropdown-profile-info.username",
+      how: "text",
+    },
+  });
+  return currentClientUsername;
+}
+
 export async function getUserCompatibilityScrapping(
   username: string
 ): Promise<ScrappedData> {
